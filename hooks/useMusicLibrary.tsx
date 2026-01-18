@@ -2,7 +2,9 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Song, Artist } from '../types';
 
-const WORKER_URL = 'https://cloudwave-music-handler.dilshan-music.workers.dev';
+const env = (import.meta as any).env;
+const WORKER_URL = env.VITE_WORKER_URL;
+const UPLOAD_SECRET = env.VITE_UPLOAD_SECRET;
 
 interface MusicContextType {
   songs: Song[];
@@ -23,6 +25,10 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
   const [error, setError] = useState<string | null>(null);
 
   const fetchData = async () => {
+    if (!WORKER_URL) {
+      console.error("Worker URL is missing from environment variables.");
+      return;
+    }
     setIsLoading(true);
     try {
       const [songsRes, artistsRes] = await Promise.all([
@@ -42,7 +48,6 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
         artistId: s.artistId?.toString() || s.artist_id?.toString() || '',
         album: s.album || '',
         genre: s.genre || 'Pop',
-        // LOGIC FIX: Explicitly check for 'year' key from D1 results
         year: s.year !== undefined && s.year !== null ? s.year.toString() : '',
         description: s.description || '',
         lyrics: s.lyrics || '',
@@ -78,7 +83,7 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Custom-Auth-Key': 'dilshanchanushka@123' 
+        'X-Custom-Auth-Key': UPLOAD_SECRET
       },
       body: JSON.stringify(songData)
     });
@@ -91,7 +96,7 @@ export const MusicProvider: React.FC<{ children: ReactNode }> = ({ children }) =
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'X-Custom-Auth-Key': 'dilshanchanushka@123' 
+        'X-Custom-Auth-Key': UPLOAD_SECRET
       },
       body: JSON.stringify(artistData)
     });

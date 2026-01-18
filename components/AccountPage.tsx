@@ -32,8 +32,9 @@ const AccountPage: React.FC = () => {
   const fileInputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
 
-  const workerUrl = 'https://cloudwave-music-handler.dilshan-music.workers.dev';
-  const uploadSecret = 'dilshanchanushka@123';
+  const env = (import.meta as any).env;
+  const workerUrl = env.VITE_WORKER_URL;
+  const uploadSecret = env.VITE_UPLOAD_SECRET;
 
   useEffect(() => {
     if (profile) {
@@ -43,6 +44,7 @@ const AccountPage: React.FC = () => {
   }, [profile]);
 
   const uploadToR2 = async (file: File) => {
+    if (!workerUrl) throw new Error("Worker URL not configured.");
     const key = `profiles/${profile?.uid}-${Date.now()}-${file.name.replace(/\s+/g, '-')}`;
     const res = await fetch(`${workerUrl}/${encodeURIComponent(key)}`, {
       method: 'PUT',
@@ -111,9 +113,9 @@ const AccountPage: React.FC = () => {
             onClick={() => navigate('/')}
             className="flex items-center text-[10px] font-black uppercase tracking-[0.3em] text-sp-light-gray hover:text-black mb-4 transition-all"
           >
-            <ChevronLeftIcon className="w-4 h-4 mr-1" /> Back to home
+            <ChevronLeftIcon className="w-4 h-4 mr-1" /> Back to Home
           </button>
-          <h1 className="text-5xl font-black text-black tracking-tighter leading-none">Account Settings</h1>
+          <h1 className="text-5xl font-black text-black tracking-tighter leading-none">Account Center</h1>
           <p className="text-sp-gray font-bold text-sm mt-2">Manage your global Dilshan Music credentials</p>
         </div>
         
