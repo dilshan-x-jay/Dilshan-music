@@ -1,0 +1,107 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dilshan Music | High-Fidelity Music Discovery</title>
+    
+    <!-- Standard Meta -->
+<meta name="description" content="Dilshan Music lets you stream and download high-quality music tracks for free. Discover trending songs, albums, and exclusive audio." />
+<meta name="keywords" content="music downloader, free music download, stream music, Dilshan Music, high quality audio, mp3 songs" />
+<meta name="author" content="Dilshan Chanushka" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<link rel="canonical" href="https://dilshan-music.vercel.app/" />
+
+<!-- Open Graph / Facebook / WhatsApp -->
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Dilshan Music" />
+<meta property="og:url" content="https://dilshan-music.vercel.app/" />
+<meta property="og:title" content="Dilshan Music – Download & Stream High Quality Music" />
+<meta property="og:description" content="Stream and download high-quality music for free. Discover trending songs and exclusive audio on Dilshan Music." />
+
+<meta property="og:image" content="https://dilshan-music.vercel.app/og-preview.png" />
+<meta property="og:image:secure_url" content="https://dilshan-music.vercel.app/og-preview.png" />
+<meta property="og:image:type" content="image/png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="Dilshan Music – High Quality Music Downloads" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Dilshan Music – Download & Stream High Quality Music" />
+<meta name="twitter:description" content="Download and stream high-quality music tracks for free on Dilshan Music." />
+<meta name="twitter:image" content="https://dilshan-music.vercel.app/og-preview.png" />
+<meta name="twitter:site" content="@DilshanMusic" />
+
+    <!-- Favicons -->
+<link rel="icon" href="/public/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/public/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/public/favicon-16x16.png">
+
+<link rel="apple-touch-icon" sizes="180x180" href="/public/apple-touch-icon.png">
+
+<link rel="manifest" href="/public/site.webmanifest">
+<meta name="theme-color" content="#000000">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/styles.css">
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'sp-dark-bg': '#FFFFFF',
+              'sp-med-bg': '#F9F9F9',
+              'sp-light-bg': '#F0F0F0',
+              'sp-primary': '#16A34A',
+              'sp-secondary': '#15803D',
+              'sp-white': '#1A1A1A',
+              'sp-gray': '#4B5563',
+              'sp-light-gray': '#9CA3AF',
+              'sp-pink': '#E11D48',
+            },
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+            keyframes: {
+              fadeIn: {
+                '0%': { opacity: 0, transform: 'translateY(10px)' },
+                '100%': { opacity: 1, transform: 'translateY(0)' },
+              },
+              marquee: {
+                '0%': { transform: 'translateX(0)' },
+                '100%': { transform: 'translateX(-100%)' },
+              }
+            },
+            animation: {
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              'marquee': 'marquee 10s linear infinite',
+            }
+          }
+        }
+      }
+    </script>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://esm.sh/react@18.3.1",
+    "react-dom": "https://esm.sh/react-dom@18.3.1",
+    "react-dom/client": "https://esm.sh/react-dom@18.3.1/client",
+    "react-router-dom": "https://esm.sh/react-router-dom@6.22.3",
+    "react-helmet-async": "https://esm.sh/react-helmet-async@2.0.1",
+    "firebase/app": "https://esm.sh/firebase@10.7.1/app",
+    "firebase/auth": "https://esm.sh/firebase@10.7.1/auth",
+    "firebase/firestore": "https://esm.sh/firebase@10.7.1/firestore",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "firebase/": "https://esm.sh/firebase@^12.8.0/"
+  }
+}
+</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>
